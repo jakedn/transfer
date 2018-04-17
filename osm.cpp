@@ -7,10 +7,10 @@ using std::cout;
 using std::endl;
 
 #define WARMUP 1000
-#define DEFAULT_NUMBER_OF_ITERATIONS 1010
+#define DEFAULT_NUMBER_OF_ITERATIONS 1000
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
-#define UNROLLING_FACTOR 3
+#define UNROLLING_FACTOR 5
 
 double get_time(const timeval tv_start, const timeval tv_end, unsigned long long iterations)
 {
@@ -27,29 +27,12 @@ void empty_func3() {}
 
 int main()
 {
-/*
-    timeval tv_start;
-    timeval tv_end;
-    gettimeofday (&tv_start, NULL);
-cout<<tv_start.tv_sec<<" "<<tv_start.tv_usec<<endl;   
-    int x = 1;
-    for(int i = 0; i < NUMBER_OF_ITERATIONS; i++)
-    {
-        x++;
-    }
-    gettimeofday (&tv_end, NULL);
-cout<<tv_end.tv_sec<<" "<<tv_end.tv_usec<<endl; 
-    
-    long long diff = get_diff(tv_start, tv_end);
-cout<<diff<<endl;
-*/
-
-osm_init();
-cout<<osm_operation_time(0)<<endl;
-osm_init();
-cout<<osm_function_time(0)<<endl;
-osm_init();
-cout<<osm_syscall_time(0)<<endl;
+    osm_init();
+    cout<<osm_operation_time(0)<<endl;
+    osm_init();
+    cout<<osm_function_time(0)<<endl;
+    osm_init();
+    cout<<osm_syscall_time(0)<<endl;
     return 0;
 }
 
@@ -77,6 +60,8 @@ double osm_operation_time(unsigned int iterations)
     int x = 0;
     int y = 0;
     int z = 0;
+    int w = 0;
+    int r = 0;
 
 
     for(unsigned int i = 0; i < WARMUP; i++)
@@ -92,6 +77,8 @@ double osm_operation_time(unsigned int iterations)
         x = x + 1;
         y = y + 1;
         z = z + 1;
+        w = w + 1;
+        r = r + 1;
     }
     gettimeofday (&tv_end, NULL);
     return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
@@ -103,7 +90,6 @@ double osm_function_time(unsigned int iterations)
     iterations = (iterations == 0 ? DEFAULT_NUMBER_OF_ITERATIONS : iterations);
     int x = 0;
     int y = 0;
-    int z = 0;
 
 
     for(unsigned int i = 0; i < WARMUP; i++)
@@ -120,6 +106,8 @@ double osm_function_time(unsigned int iterations)
         empty_func1();
         empty_func2();
         empty_func3();
+        empty_func1();
+        empty_func2();
     }
     gettimeofday (&tv_end, NULL);
     return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
@@ -130,8 +118,6 @@ double osm_syscall_time(unsigned int iterations)
     iterations = (iterations == 0 ? DEFAULT_NUMBER_OF_ITERATIONS : iterations);
     int x = 0;
     int y = 0;
-    int z = 0;
-
 
     for(unsigned int i = 0; i < WARMUP; i++)
     {
@@ -143,6 +129,8 @@ double osm_syscall_time(unsigned int iterations)
     gettimeofday (&tv_start, NULL);
     for(unsigned int i = 0; i < iterations; i++)
     {
+        OSM_NULLSYSCALL;
+        OSM_NULLSYSCALL;
         OSM_NULLSYSCALL;
         OSM_NULLSYSCALL;
         OSM_NULLSYSCALL;
