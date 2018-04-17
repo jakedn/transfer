@@ -6,6 +6,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#define WARMUP 10000
 #define DEFAULT_NUMBER_OF_ITERATIONS 1010
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
@@ -61,7 +62,7 @@ int osm_init()
     */
     int x = 0;
     int y = 0;
-    for(unsigned int i = 0; i < DEFAULT_NUMBER_OF_ITERATIONS; i++)
+    for(unsigned int i = 0; i < WARMUP; i++)
     {
         ++x;
         ++y;
