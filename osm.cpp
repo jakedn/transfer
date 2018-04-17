@@ -6,7 +6,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define DEFAULT_NUMBER_OF_ITERATIONS 1000
+#define DEFAULT_NUMBER_OF_ITERATIONS 1010
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
 #define UNROLLING_FACTOR 3
