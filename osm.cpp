@@ -6,12 +6,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define DEFAULT_NUMBER_OF_ITERATIONS 12345678
+#define DEFAULT_NUMBER_OF_ITERATIONS 2123456789
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
 #define UNROLLING_FACTOR 3
 
-double get_time(const timeval tv_start, const timeval tv_end, unsigned int iterations)
+double get_time(const timeval tv_start, const timeval tv_end, unsigned long long iterations)
 {
     double answer = (tv_end.tv_sec - tv_start.tv_sec) * FROM_SECOND_TO_MICRO;
     answer += (tv_end.tv_usec - tv_start.tv_usec);
@@ -81,7 +81,7 @@ double osm_operation_time(unsigned int iterations)
         ++z;
     }
     gettimeofday (&tv_end, NULL);
-    return get_time(tv_start, tv_end, iterations * UNROLLING_FACTOR);
+    return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
 }
 
 
@@ -98,7 +98,7 @@ double osm_function_time(unsigned int iterations)
         empty_func3();
     }
     gettimeofday (&tv_end, NULL);
-    return get_time(tv_start, tv_end, iterations * UNROLLING_FACTOR);
+    return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
 }
 
 double osm_syscall_time(unsigned int iterations)
@@ -114,7 +114,7 @@ double osm_syscall_time(unsigned int iterations)
         OSM_NULLSYSCALL;
     }
     gettimeofday (&tv_end, NULL);
-    return get_time(tv_start, tv_end, iterations * UNROLLING_FACTOR);
+    return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
 }
 
 
