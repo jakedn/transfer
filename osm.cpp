@@ -11,22 +11,16 @@ using std::endl;
 #define FROM_MILI_TO_NANO 1000
 #define UNROLLING_FACTOR 3
 
-double get_time(const timeval tv_start,const timeval tv_end, unsigned int iterations)
+double get_time(const timeval tv_start, const timeval tv_end, unsigned int iterations)
 {
     double answer = (tv_end.tv_sec - tv_start.tv_sec) * FROM_SECOND_TO_NANO;
-    answer += (tv_end.tv_usec - tv_start.tv_usec)*FROM_MILI_TO_NANO;
-    return answer/iterations;
+    answer += (tv_end.tv_usec - tv_start.tv_usec) * FROM_MILI_TO_NANO;
+    return answer / iterations;
 }
 
-void empty_func1()
-{
-}
-void empty_func2()
-{
-}
-void empty_func3()
-{
-}
+void empty_func1() {}
+void empty_func2() {}
+void empty_func3() {}
 
 
 
