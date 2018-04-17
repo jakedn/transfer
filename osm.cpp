@@ -56,9 +56,14 @@ cout<<osm_syscall_time(0)<<endl;
 
 int osm_init()
 {
-    osm_operation_time(0);
-    osm_function_time(0);
-    osm_syscall_time(0);
+
+    int x = 0;
+    int y = 0;
+    for(unsigned int i = 0; i < WARMUP; i++)
+    {
+        ++x;
+        ++y;
+    }
     return 0;
 }
 
@@ -72,6 +77,13 @@ double osm_operation_time(unsigned int iterations)
     int x = 0;
     int y = 0;
     int z = 0;
+
+
+    for(unsigned int i = 0; i < WARMUP; i++)
+    {
+        ++x;
+        ++y;
+    }
     timeval tv_start;
     timeval tv_end;
     gettimeofday (&tv_start, NULL);
@@ -89,6 +101,17 @@ double osm_operation_time(unsigned int iterations)
 double osm_function_time(unsigned int iterations)
 {   
     iterations = (iterations == 0 ? DEFAULT_NUMBER_OF_ITERATIONS : iterations);
+    int x = 0;
+    int y = 0;
+    int z = 0;
+
+
+    for(unsigned int i = 0; i < WARMUP; i++)
+    {
+        ++x;
+        ++y;
+    }
+
     timeval tv_start;
     timeval tv_end;
     gettimeofday (&tv_start, NULL);
@@ -105,6 +128,16 @@ double osm_function_time(unsigned int iterations)
 double osm_syscall_time(unsigned int iterations)
 {
     iterations = (iterations == 0 ? DEFAULT_NUMBER_OF_ITERATIONS : iterations);
+    int x = 0;
+    int y = 0;
+    int z = 0;
+
+
+    for(unsigned int i = 0; i < WARMUP; i++)
+    {
+        ++x;
+        ++y;
+    }
     timeval tv_start;
     timeval tv_end;
     gettimeofday (&tv_start, NULL);
