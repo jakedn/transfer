@@ -6,7 +6,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define WARMUP 10000
+#define WARMUP 10000000
 #define DEFAULT_NUMBER_OF_ITERATIONS 1010
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
