@@ -89,9 +89,9 @@ double osm_operation_time(unsigned int iterations)
     gettimeofday (&tv_start, NULL);
     for(unsigned int i = 0; i < iterations; i++)
     {
-        ++x;
-        ++y;
-        ++z;
+        x = x + 1;
+        y = y + 1;
+        z = z + 1;
     }
     gettimeofday (&tv_end, NULL);
     return get_time(tv_start, tv_end, (unsigned long long)iterations * UNROLLING_FACTOR);
