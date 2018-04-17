@@ -7,15 +7,15 @@ using std::cout;
 using std::endl;
 
 #define DEFAULT_NUMBER_OF_ITERATIONS 10000
-#define FROM_SECOND_TO_NANO 1000000000
+#define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
 #define UNROLLING_FACTOR 3
 
 double get_time(const timeval tv_start, const timeval tv_end, unsigned int iterations)
 {
-    double answer = (tv_end.tv_sec - tv_start.tv_sec) * FROM_SECOND_TO_NANO;
-    answer += (tv_end.tv_usec - tv_start.tv_usec) * FROM_MICRO_TO_NANO;
-    return answer / iterations;
+    double answer = (tv_end.tv_sec - tv_start.tv_sec) * FROM_SECOND_TO_MICRO;
+    answer += (tv_end.tv_usec - tv_start.tv_usec);
+    return answer / iterations * FROM_MICRO_TO_NANO;
 }
 
 void empty_func1() {}
