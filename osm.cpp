@@ -6,7 +6,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define WARMUP 10000000
+#define WARMUP 1000
 #define DEFAULT_NUMBER_OF_ITERATIONS 1010
 #define FROM_SECOND_TO_MICRO 1000000
 #define FROM_MICRO_TO_NANO 1000
@@ -56,17 +56,9 @@ cout<<osm_syscall_time(0)<<endl;
 
 int osm_init()
 {
-    /*
-        int* x = (int* )malloc(sizeof(int));
-        free(x);
-    */
-    int x = 0;
-    int y = 0;
-    for(unsigned int i = 0; i < WARMUP; i++)
-    {
-        ++x;
-        ++y;
-    }
+    osm_operation_time(0);
+    osm_function_time(0);
+    osm_syscall_time(0);
     return 0;
 }
 
