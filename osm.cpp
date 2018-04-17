@@ -55,12 +55,20 @@ cout<<osm_syscall_time(0)<<endl;
 
 int osm_init()
 {
-/*
-    int* x = (int* )malloc(sizeof(int));
-    free(x);
-*/
+    /*
+        int* x = (int* )malloc(sizeof(int));
+        free(x);
+    */
+    int x = 0;
+    int y = 0;
+    for(unsigned int i = 0; i < DEFAULT_NUMBER_OF_ITERATIONS; i++)
+    {
+        ++x;
+        ++y;
+    }
     return 0;
 }
+
 int osm_finalizer()
 {
     return 0;
@@ -68,9 +76,9 @@ int osm_finalizer()
 double osm_operation_time(unsigned int iterations)
 {   
     iterations = (iterations == 0 ? DEFAULT_NUMBER_OF_ITERATIONS : iterations);
-    int x;
-    int y;
-    int z;
+    int x = 0;
+    int y = 0;
+    int z = 0;
     timeval tv_start;
     timeval tv_end;
     gettimeofday (&tv_start, NULL);
